@@ -108,7 +108,11 @@ export default function Home() {
                 cursor: "pointer"
               }}>
                 Sepete Ekle
-              </button>
+              </button> 
+              
+              <a href="/product" style={{ color: "#22D3EE", display: "block", marginTop: "10px" }}>
+                Detayları Gör
+              </a>
             </div>
           ))}
         </div>
