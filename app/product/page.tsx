@@ -1,3 +1,4 @@
+"use client";
 export default function ProductPage() {
   return (
     <main style={{ minHeight: "100vh", background: "#050816", color: "white", padding: "20px", fontFamily: "Arial" }}>
