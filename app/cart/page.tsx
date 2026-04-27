@@ -11,7 +11,7 @@ export default function CartPage() {
         <strong>299 TL</strong>
 
         <a
-          href="/success"
+          href="/api/checkout"
           style={{
             display: "block",
             textAlign: "center",
