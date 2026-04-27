@@ -8,14 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "stripe": "latest"
-  },
-  "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
-    "@types/node": "latest"
+    "next": "14.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "stripe": "12.18.0"
   }
 }
