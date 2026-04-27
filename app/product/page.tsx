@@ -17,19 +17,20 @@ export default function ProductPage() {
 
         <strong style={{ display: "block", fontSize: "34px", marginTop: "25px" }}>299 TL</strong>
 
-        <button style={{
-          marginTop: "22px",
-          background: "#7C3AED",
-          color: "white",
-          border: 0,
-          borderRadius: "14px",
-          padding: "15px 22px",
-          fontWeight: "bold",
-          width: "100%"
-        }}>
-          Satın Al
-        </button>
-      </section>
-    </main>
-  );
-}
+        <button
+  onClick={() => {
+    alert("Satın alma başarılı! Kod: ABCD-1234-EFGH");
+  }}
+  style={{
+    marginTop: "22px",
+    background: "#7C3AED",
+    color: "white",
+    border: 0,
+    borderRadius: "14px",
+    padding: "15px 22px",
+    fontWeight: "bold",
+    width: "100%"
+  }}
+>
+  Satın Al
+</button>
