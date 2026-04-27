@@ -15,7 +15,7 @@ export default function CartPage() {
           style={{
             display: "block",
             textAlign: "center",
-            marginTop: "22px",
+            marginTop: "22px",   
             background: "#7C3AED",
             color: "white",
             borderRadius: "14px",
@@ -23,7 +23,7 @@ export default function CartPage() {
             fontWeight: "bold",
             textDecoration: "none"
           }}
-        >
+        > 
           Ödemeye Geç
         </a>
       </div>
