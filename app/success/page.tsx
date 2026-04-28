@@ -3,18 +3,35 @@
 import { useEffect, useState } from "react";
 
 export default function SuccessPage() {
-  const [key, setKey] = useState<string>("Yükleniyor...");
+  const [key, setKey] = useState("Yükleniyor...");
 
   useEffect(() => {
-    // sepeti temizle
+    // 🧹 sepet temizle
     localStorage.removeItem("cart");
 
-    // API'den key çek
-    fetch("/api/key")
-      .then((res) => res.json())
-      .then((data) => {
-        setKey(data.key);
-      });
+    // 🔑 key çek
+    async function fetchKey() {
+      try {
+        const res = await fetch("/api/key");
+
+        if (!res.ok) {
+          setKey("❌ Stok tükendi");
+          return;
+        }
+
+        const data = await res.json();
+
+        if (data.key) {
+          setKey(data.key);
+        } else {
+          setKey("❌ Key bulunamadı");
+        }
+      } catch (err) {
+        setKey("❌ Hata oluştu");
+      }
+    }
+
+    fetchKey();
   }, []);
 
   return (
