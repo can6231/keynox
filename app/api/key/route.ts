@@ -1,15 +1,23 @@
 import { NextResponse } from "next/server";
-
-const keys = [
-  "CYBER-1111-2222",
-  "CYBER-3333-4444",
-  "CYBER-5555-6666"
-];
+import { getDb } from "@/lib/mongodb";
 
 export async function GET() {
-  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  const db = await getDb();
+
+  // kullanılmamış key al ve used=true yap
+  const result = await db.collection("keys").findOneAndUpdate(
+    { used: false },
+    { $set: { used: true } },
+    { returnDocument: "after" }
+  );
+
+  if (!result.value) {
+    return NextResponse.json({
+      error: "Key kalmadı"
+    });
+  }
 
   return NextResponse.json({
-    key: randomKey
+    key: result.value.key
   });
 }
