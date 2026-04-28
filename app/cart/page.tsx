@@ -27,6 +27,25 @@ export default function CartPage() {
           Ödemeye Geç
         </a>
       </div>
+        "use client";
+import { useSearchParams } from "next/navigation";
+
+export default function Cart() {
+  const params = useSearchParams();
+  const canceled = params.get("canceled");
+
+  return (
+    <div>
+      <h1>Sepet</h1>
+
+      {canceled && (
+        <p style={{ color: "red", marginTop: 10 }}>
+          ❌ Ödeme iptal edildi
+        </p>
+      )}
+
+      {/* senin ürünler */}
+    </div>
     </main>
   );
 }
