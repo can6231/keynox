@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { getDb } from "../../../lib/mongodb";
 
 const uri = process.env.MONGODB_URI as string;
 
