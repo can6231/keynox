@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 const games = [
   { name: "Cyber Quest", platform: "Steam", price: "299 TL", tag: "Popüler" },
   { name: "Racing X", platform: "Xbox", price: "449 TL", tag: "Yeni" },
@@ -7,6 +9,16 @@ const games = [
 ];
 
 export default function Home() {
+  const router = useRouter();
+
+  function addToCart(game: any) {
+    const currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const updatedCart = [...currentCart, game];
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    router.push("/cart");
+  }
+
   return (
     <main style={{ minHeight: "100vh", background: "#050816", color: "white", padding: "20px", fontFamily: "Arial" }}>
       <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "40px" }}>
@@ -58,9 +70,12 @@ export default function Home() {
               <p style={{ color: "#22D3EE" }}>{game.platform}</p>
               <strong style={{ fontSize: "24px" }}>{game.price}</strong>
 
-              <a href="/cart" style={{ marginTop: "18px", display: "inline-block", background: "#7C3AED", color: "white", borderRadius: "12px", padding: "12px 18px", fontWeight: "bold", textDecoration: "none" }}>
+              <button
+                onClick={() => addToCart(game)}
+                style={{ marginTop: "18px", background: "#7C3AED", color: "white", border: 0, borderRadius: "12px", padding: "12px 18px", fontWeight: "bold", cursor: "pointer" }}
+              >
                 Sepete Ekle
-              </a>
+              </button>
 
               <a href="/product" style={{ color: "#22D3EE", display: "block", marginTop: "10px" }}>
                 Detayları Gör
