@@ -26,6 +26,9 @@ export default function CartPage() {
         > 
           Ödemeye Geç
         </a>
+        <p style={{ color: "red" }}>
+          Ödeme iptal edildi
+        </p>
       </div>
     </main>
   );
