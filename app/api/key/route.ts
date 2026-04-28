@@ -13,8 +13,7 @@ export async function GET() {
       }
     },
     {
-      sort: { createdAt: 1 },
-      returnDocument: "after"
+      sort: { createdAt: 1 }
     }
   );
 
@@ -25,7 +24,10 @@ export async function GET() {
     );
   }
 
+  // 🔥 TypeScript fix
+  const keyData = result as any;
+
   return NextResponse.json({
-    key: result.key
+    key: keyData.key
   });
 }
