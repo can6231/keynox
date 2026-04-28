@@ -1,11 +1,24 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function CartPage() {
+function CartContent() {
   const params = useSearchParams();
   const canceled = params.get("canceled");
 
+  return (
+    <>
+      {canceled && (
+        <p style={{ color: "red" }}>
+          ❌ Ödeme iptal edildi
+        </p>
+      )}
+    </>
+  );
+}
+
+export default function CartPage() {
   return (
     <main
       style={{
@@ -22,11 +35,10 @@ export default function CartPage() {
 
       <h1>Sepetim</h1>
 
-      {canceled && (
-        <p style={{ color: "red" }}>
-          ❌ Ödeme iptal edildi
-        </p>
-      )}
+      {/* 🔥 BURASI ÖNEMLİ */}
+      <Suspense fallback={null}>
+        <CartContent />
+      </Suspense>
 
       <div
         style={{
