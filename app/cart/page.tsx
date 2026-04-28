@@ -17,6 +17,19 @@ export default function CartPage() {
     setCart([]);
   }
 
+  async function goToCheckout() {
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      body: JSON.stringify({ cart }),
+    });
+
+    const data = await res.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    }
+  }
+
   const total = cart.reduce((sum, item) => {
     const price = Number(item.price.replace(" TL", ""));
     return sum + price;
@@ -44,12 +57,12 @@ export default function CartPage() {
 
           <h2 style={{ marginTop: "25px" }}>Toplam: {total} TL</h2>
 
-          <a
-            href="/api/checkout"
-            style={{ display: "block", textAlign: "center", marginTop: "22px", background: "#7C3AED", color: "white", borderRadius: "14px", padding: "15px 22px", fontWeight: "bold", textDecoration: "none" }}
+          <button
+            onClick={goToCheckout}
+            style={{ display: "block", width: "100%", textAlign: "center", marginTop: "22px", background: "#7C3AED", color: "white", border: 0, borderRadius: "14px", padding: "15px 22px", fontWeight: "bold" }}
           >
             Ödemeye Geç
-          </a>
+          </button>
 
           <button
             onClick={clearCart}
