@@ -1,3 +1,24 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
+
+export default function CartPage() {
+  const params = useSearchParams();
+  const canceled = params.get("canceled");
+
+  return (
+    <main style={{ minHeight: "100vh" }}>
+      <a href="/" style={{ color: "#22c55e" }}>← Ana sayfa</a>
+
+      <h1>Sepetim</h1>
+
+      {canceled && (
+        <p style={{ color: "red" }}>
+          ❌ Ödeme iptal edildi
+        </p>
+      )}
+    </main>
+    
 export default function CartPage() {
   return (
     <main style={{ minHeight: "100vh", background: "#050816", color: "white", padding: "20px", fontFamily: "Arial" }}>
@@ -26,25 +47,6 @@ export default function CartPage() {
         > 
           Ödemeye Geç
         </a>
-      </div>
-        "use client";
-import { useSearchParams } from "next/navigation";
-
-export default function Cart() {
-  const params = useSearchParams();
-  const canceled = params.get("canceled");
-
-  return (
-    <div>
-      <h1>Sepet</h1>
-
-      {canceled && (
-        <p style={{ color: "red", marginTop: 10 }}>
-          ❌ Ödeme iptal edildi
-        </p>
-      )}
-
-      {/* senin ürünler */}
     </div>
     </main>
   );
