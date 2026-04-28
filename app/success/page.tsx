@@ -1,11 +1,20 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function SuccessPage() {
+  const [key, setKey] = useState<string>("Yükleniyor...");
+
   useEffect(() => {
-    // ödeme sonrası sepeti temizle
+    // sepeti temizle
     localStorage.removeItem("cart");
+
+    // API'den key çek
+    fetch("/api/key")
+      .then((res) => res.json())
+      .then((data) => {
+        setKey(data.key);
+      });
   }, []);
 
   return (
@@ -37,7 +46,7 @@ export default function SuccessPage() {
           fontWeight: "bold",
         }}
       >
-        ABCD-1234-XYZ
+        {key}
       </div>
 
       <a
